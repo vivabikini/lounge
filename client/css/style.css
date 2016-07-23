@@ -803,14 +803,14 @@ button {
 }
 
 #chat .messages {
-	display: table;
-	table-layout: fixed;
-	width: 100%;
 	padding: 10px 0;
 }
 
 #chat .msg {
 	word-wrap: break-word;
+	display: block;
+	overflow: hidden;
+	position: relative;
 }
 
 #chat .unread-marker {
@@ -854,25 +854,38 @@ button {
 #chat .time,
 #chat .from,
 #chat .text {
-	display: table-cell;
+	display: block;
 	padding: 2px 0;
-	vertical-align: top;
 }
 
 #chat .time {
+	float: left;
 	color: #ddd;
 	text-align: right;
-	max-width: 46px;
-	min-width: 46px;
+	width: 46px;
 }
 
 #chat .from {
-	border-right: 1px solid #f6f6f6;
+	float: left;
 	color: #b1c3ce;
 	padding-right: 10px;
 	text-align: right;
-	max-width: 134px;
-	min-width: 134px;
+	width: 134px;
+}
+
+#chat .text:before {
+	position: absolute;
+	margin-left: -11px;
+	top: 0;
+	bottom: 0;
+	content: "";
+	width: 1px;
+	background: #f6f6f6;
+}
+
+#chat .text {
+	margin: auto;
+	overflow: hidden;
 }
 
 #loading a,
@@ -1664,16 +1677,19 @@ button {
 	}
 
 	#chat .msg {
-		display: block;
 		padding: 2px 0;
 	}
 
 	#chat .time,
 	#chat .from,
 	#chat .text {
-		border: 0;
 		display: inline;
+		float: none;
 		padding: 0;
+	}
+
+	#chat .text:before {
+		display: none;
 	}
 
 	#chat .unread-marker {
