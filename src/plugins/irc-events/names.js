@@ -9,6 +9,8 @@ module.exports = function(irc, network) {
 			return;
 		}
 		chan.users = [];
+		var testList = [];
+
 		_.each(data.users, function(u) {
 			var user = new User(u);
 
@@ -17,7 +19,12 @@ module.exports = function(irc, network) {
 				user.mode = network.prefixLookup[user.mode];
 			}
 
+			if (testList.indexOf(u.nick) >= 0) {
+				log.debug("[" + client.name + " (#" + client.id + ") on " + network.name + " (#" + network.id + ")]", "Got duplicate nick " + u.nick + " in NAMES reply of " + data.channel);
+			}
+
 			chan.users.push(user);
+			testList.push(u.nick);
 		});
 		chan.sortUsers(irc);
 		client.emit("users", {

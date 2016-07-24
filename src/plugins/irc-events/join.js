@@ -25,6 +25,8 @@ module.exports = function(irc, network) {
 			client.emit("users", {
 				chan: chan.id
 			});
+		} else {
+			log.debug("[" + client.name + " (#" + client.id + ") on " + network.name + " (#" + network.id + ")]", "Got duplicate nick " + data.nick + " in JOIN on " + data.channel);
 		}
 
 		var msg = new Msg({
