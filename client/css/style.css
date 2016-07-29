@@ -198,7 +198,8 @@ button {
 #chat .whois .from:before,
 #chat .nick .from:before,
 #chat .action .from:before,
-.context-menu-item:before {
+.context-menu-item:before,
+#nick button:before {
 	font: normal normal normal 14px/1 FontAwesome;
 	font-size: inherit; /* Can't have font-size inherit on line above, so need to override */
 	-webkit-font-smoothing: antialiased;
@@ -292,6 +293,18 @@ button {
 #settings #play:before {
 	content: "\f028"; /* http://fontawesome.io/icon/volume-up/ */
 	margin-right: 9px;
+}
+
+#set_nick:before {
+	content: "\f040"; /* http://fontawesome.io/icon/pencil/ */
+}
+
+#submit_nick:before {
+	content: "\f00c"; /* http://fontawesome.io/icon/check/ */
+}
+
+#cancel_nick:before {
+	content: "\f00d"; /* http://fontawesome.io/icon/times/ */
 }
 
 /* End icons */
@@ -1251,30 +1264,62 @@ button {
 	align-items: flex-end;
 }
 
+[contenteditable]:focus {
+	outline: none;
+}
+
+/* Nick editor */
+
 #form #nick {
 	background: #f6f6f6;
 	color: #666;
 	font: inherit;
 	font-size: 11px;
-	margin: 4px;
-	line-height: 26px;
-	height: 24px;
-	padding: 0 9px;
-	border-radius: 1px;
+	margin: 3px;
+	line-height: 24px;
+	height: 26px;
+	padding-left: 9px;
+	padding-right: 5px;
+	border-radius: 2px;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	flex: 0 0 auto;
+	border: 1px solid white; /* FIXME Fix themes which display a white border: transparent is not a working solution */
+	transition: border-color .2s;
 }
 
+#form #nick_value {
+	padding-right: 5px;
+}
+
+#form #nick.editable {
+	border-color: black;
+}
+
+#nick button#set_nick,
+#nick button#submit_nick,
+#nick button#cancel_nick {
+	width: 18px;
+}
+
+#nick.editable button#set_nick,
+#nick button#submit_nick,
+#nick button#cancel_nick {
+	display: none;
+}
+
+#nick.editable button#submit_nick,
+#nick.editable button#cancel_nick {
+	display: inline-block;
+}
+
+/* FIXME This will not match anything anymore, not sure how to deal with that */
 #form #nick:empty {
 	visibility: hidden;
 }
 
-#form #nick:after {
-	content: ":";
-}
+/* End nick editor */
 
 #form #input {
 	background: transparent;
