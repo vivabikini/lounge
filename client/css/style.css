@@ -1275,9 +1275,9 @@ button {
 	color: #666;
 	font: inherit;
 	font-size: 11px;
-	margin: 3px;
-	line-height: 24px;
-	height: 26px;
+	margin: 4px;
+	line-height: 22px;
+	height: 24px;
 	padding-left: 9px;
 	padding-right: 5px;
 	border-radius: 2px;
@@ -1285,7 +1285,7 @@ button {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	border: 1px solid white; /* FIXME Fix themes which display a white border: transparent is not a working solution */
+	border: 1px solid transparent;
 	transition: border-color .2s;
 }
 
