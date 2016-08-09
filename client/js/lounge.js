@@ -720,8 +720,7 @@ $(function() {
 	}
 
 	function cancelNick() {
-		// FIXME This fails when active window *is* the server window...
-		setNick(sidebar.find(".channel.active").closest(".network").data("nick"));
+		setNick(sidebar.find(".chan.active").closest(".network").data("nick"));
 	}
 
 	$("#nick_value").keypress(function(e) {
