@@ -125,6 +125,10 @@ a:hover,
 	font: 12px Inconsolata-g, monospace;
 }
 
+#windows select.input {
+	height: 38px;
+}
+
 #footer .icon {
 	color: #666;
 }
